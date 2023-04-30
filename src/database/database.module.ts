@@ -11,6 +11,9 @@ config();
       database: 'nova-shop',
       entities: [__dirname + '/../**/*.entity.{js,ts}'],
       synchronize: true,
+      cache: false,
+      logger: 'file',
+      logging: true,
     }),
   ],
 })
