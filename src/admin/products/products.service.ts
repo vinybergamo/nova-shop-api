@@ -44,7 +44,11 @@ export class ProductsService {
 
     if (!product) throw new HttpException('Product not found', 404);
 
-    return this.productRepository.save({ ...product, ...body });
+    return this.productRepository.save({
+      ...product,
+      ...body,
+      updated_at: new Date(),
+    });
   }
 
   async remove(product_id: string) {
