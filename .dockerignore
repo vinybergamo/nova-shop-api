@@ -1,0 +1,12 @@
+node_modules
+ormlogs.log
+Dockerfile
+.env
+.git
+.prettierrc
+README.md
+.gitignore
+.eslintrc.js
+nest-cli.json
+test
+.dockerignore
