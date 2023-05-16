@@ -1,10 +1,10 @@
+import { Category } from 'src/categories/entities/category.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  BeforeUpdate,
-  BeforeInsert,
-  AfterInsert,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 @Entity()
@@ -57,4 +57,8 @@ export class Product {
     default: new Date(),
   })
   updated_at: Date;
+
+  @ManyToMany(() => Category)
+  @JoinTable()
+  categories: Category[];
 }

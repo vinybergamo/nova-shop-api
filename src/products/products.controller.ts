@@ -22,8 +22,8 @@ export class ProductsController {
 
   @Get(':id')
   @HttpCode(200)
-  findOne(@Param('id') id: string) {
-    return this.productsService.findOne(id);
+  findOne(@Param('id') id: number) {
+    return this.productsService.findOne(id, ['categories']);
   }
 
   @Post()
@@ -32,12 +32,31 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() body: CreateProductDto) {
+  update(@Param('id') id: number, @Body() body: CreateProductDto) {
     return this.productsService.update(id, body);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
+  delete(@Param('id') id: number) {
     return this.productsService.remove(id);
+  }
+
+  @Put(':product_id/:category_id')
+  addCategory(
+    @Param('product_id') product_id: number,
+    @Param('category_id') category_id: number,
+  ) {
+    return this.productsService.addProductToCategory(product_id, category_id);
+  }
+
+  @Delete(':product_id/:category_id')
+  removeCategory(
+    @Param('product_id') product_id: number,
+    @Param('category_id') category_id: number,
+  ) {
+    return this.productsService.removeProductToCategory(
+      product_id,
+      category_id,
+    );
   }
 }

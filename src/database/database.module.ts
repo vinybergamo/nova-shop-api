@@ -9,6 +9,7 @@ config();
       type: 'postgres',
       url: process.env.DATABASE_URL,
       database: 'nova-shop',
+      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
       autoLoadEntities: true,
       cache: false,
